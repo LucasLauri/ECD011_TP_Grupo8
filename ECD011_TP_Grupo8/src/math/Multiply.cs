@@ -11,8 +11,7 @@ namespace ECD011_TP_Grupo8.src.math
         /// <summary>
         /// Executa a multiplicação dos número em <see cref="MathOperation.Numbers"/> na ordem em que aparecem
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException">A multiplicação dos números em <see cref="MathOperation.Numbers"/> na ordem em que aparecem</exception>
+        /// <returns>A multiplicação dos números em <see cref="MathOperation.Numbers"/> na ordem em que aparecem</returns>
         public override double Run()
         {
 
