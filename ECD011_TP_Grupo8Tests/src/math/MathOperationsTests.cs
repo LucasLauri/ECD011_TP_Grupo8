@@ -46,6 +46,7 @@ namespace ECD011_TP_Grupo8.src.math.Tests
         }
 
         [TestMethod()]
+        [Description("Verifica se a função de multiplicação esta sendo executada corretamente")]
         public void MultiplyTest()
         {
             //FUTURE: usar n números aleatórios para testar a multiplicação
@@ -62,6 +63,7 @@ namespace ECD011_TP_Grupo8.src.math.Tests
         }
 
         [TestMethod()]
+        [Description("Verifica se a função de divisão esta sendo executada corretamente")]
         public void DivideTest()
         {            
             //FUTURE: usar n números aleatórios para testar a divisão
@@ -79,6 +81,7 @@ namespace ECD011_TP_Grupo8.src.math.Tests
 
 
         [TestMethod()]
+        [Description("Verifica se a função de divisão lança a exceção de divisão por zero como deveria")]
         public void DivideByZeroTest()
         {
             int a = 2;
