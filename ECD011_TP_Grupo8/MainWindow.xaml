@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ECD011_TP_Grupo8"
         xmlns:srcMath="clr-namespace:ECD011_TP_Grupo8.src.math"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ECD011 - Calculadora CI" Height="450" Width="800">
     <Grid DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" MinHeight="100"/>
