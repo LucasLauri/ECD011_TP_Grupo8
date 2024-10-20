@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,6 +12,7 @@ namespace ECD011_TP_Grupo8.src.math
     /// <summary>
     /// Classe abstrata de uma operação matemática qualquer. 
     /// </summary>
+    [DebuggerDisplay("{Symbol}")]
     public abstract class MathOperation : INotifyPropertyChanged
     {
         #region Eventos PropertyChanged
@@ -38,17 +40,6 @@ namespace ECD011_TP_Grupo8.src.math
         /// </summary>
         public List<double> Numbers { get; set; } = new List<double>();
 
-        private ICollectionView _numbersView;
-        /// <summary>
-        /// My property summary
-        /// </summary>
-        public ICollectionView NumbersView
-        {
-            get => _numbersView;
-            set => SetField(ref _numbersView, value);
-        }
-
-
         private string _symbol;
         /// <summary>
         /// Simbolo da operação matemática
@@ -67,6 +58,8 @@ namespace ECD011_TP_Grupo8.src.math
         /// <summary>
         /// Executa a operação matemática
         /// </summary>
+        /// <returns>O resultado da operação matemática, seja qual for.</returns>
+        /// <exception cref="DivideByZeroException">Um dos denominadores em <see cref="MathOperation.Numbers"/> é igual a zero e uma operação de divisão foi feita!</exception>
         public abstract double Run();
     }
 }

@@ -60,6 +60,16 @@ namespace ECD011_TP_Grupo8
             set => SetField(ref _currentResult, value);
         }
 
+        private MathOperation _currentMathOperator = null;
+        /// <summary>
+        /// Operador matemático atual
+        /// </summary>
+        public MathOperation CurrentMathOperator
+        {
+            get => _currentMathOperator;
+            set => SetField(ref _currentMathOperator, value);
+        }
+
         public MainWindow()
         {
             InitializeOperationsAndNumbers();
@@ -80,6 +90,79 @@ namespace ECD011_TP_Grupo8
 
             for(int i = 0; i <= 9; i++)
                 PossibleNumbers.Add(i);
+        }
+
+        /// <summary>
+        /// Executa um operador matemátoco
+        /// </summary>
+        /// <param name="mathOperation"></param>
+        private void RunMathOperation(MathOperation mathOperation)
+        {
+            try
+            {
+                CurrentResult = mathOperation.Run();
+            }
+            catch (DivideByZeroException)
+            {
+                MessageBox.Show("Não é possível dividir por zero!");
+                CurrentResult = 0;
+            }
+
+            mathOperation.Numbers.Clear();
+        }
+
+        /// <summary>
+        /// Trato o click em um número da calculadora
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnNumber_Click(object sender, RoutedEventArgs e)
+        {
+            double number = (double)((FrameworkElement)sender).DataContext;
+
+            CurrentResult = number;
+
+            if (CurrentMathOperator == null)
+            {
+
+            }
+            else
+            {
+                CurrentMathOperator.Numbers.Add(CurrentResult);
+                if (CurrentMathOperator.Numbers.Count == 2)
+                {
+                    RunMathOperation(CurrentMathOperator);
+                    CurrentMathOperator = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Trata o click em uma operação matemática
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMathOperation_Click(object sender, RoutedEventArgs e)
+        {
+            MathOperation mathOperation = ((FrameworkElement)sender).DataContext as MathOperation;
+
+            CurrentMathOperator = mathOperation;
+            CurrentMathOperator.Numbers.Add(CurrentResult);
+        }
+
+        /// <summary>
+        /// Trata o click no botão de limpar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentResult = 0;
+
+            foreach (MathOperation mathOperation in MathOperations)
+                mathOperation.Numbers.Clear();
+
+            CurrentMathOperator = null;
         }
     }
 }
