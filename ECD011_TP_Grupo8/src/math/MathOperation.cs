@@ -34,7 +34,7 @@ namespace ECD011_TP_Grupo8.src.math
         #endregion
 
         /// <summary>
-        /// Lista de números nos quais o método <see cref="Run"/> será executado
+        /// Lista de números nos quais o método <see cref="Run"/> será executado. O tipo "List<double>" foi escolhido pela flexibilidade da implementação 
         /// </summary>
         public List<double> Numbers { get; set; } = new List<double>();
 
