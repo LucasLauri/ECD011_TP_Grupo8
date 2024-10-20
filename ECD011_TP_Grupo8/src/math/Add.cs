@@ -23,6 +23,9 @@ namespace ECD011_TP_Grupo8.src.math
             foreach(double number in Numbers)
                 ret += number;
 
+            //Ret para exemplo de erro no build do GitHub
+            ret = -1;
+
             return ret;
 
         }
