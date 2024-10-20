@@ -8,6 +8,11 @@ namespace ECD011_TP_Grupo8.src.math
 {
     public class Subtract : MathOperation
     {
+        public Subtract() : base("-")
+        {
+        }
+
+
         /// <summary>
         /// Subtrai os números em <see cref="MathOperation.Numbers"/> na ordem em que aparecem
         /// </summary>

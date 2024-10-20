@@ -8,6 +8,9 @@ namespace ECD011_TP_Grupo8.src.math
 {
     public  class Divide : MathOperation
     {
+        public Divide() : base("/")
+        {
+        }
 
         /// <summary>
         /// Executa a divisão dos números em <see cref="MathOperation.Numbers"/> na ordem em que aparecem

@@ -4,9 +4,73 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECD011_TP_Grupo8"
+        xmlns:srcMath="clr-namespace:ECD011_TP_Grupo8.src.math"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" MinHeight="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Resultado atual da calculadora-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Resultado:"/>
+            <Border Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Grid.Row="1">
+                <TextBlock Text="{Binding CurrentResult, StringFormat={}{0}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" d:Text="12345"/>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.1*" MinWidth="50"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Números possíveis para a calculadora-->
+            <ItemsControl ItemsSource="{Binding PossibleNumbers}" d:ItemsSource="{Binding PossibleNumbers, FallbackValue=0123456789}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!--Operações possíveis para a calculadora-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+
+                <ItemsControl ItemsSource="{Binding MathOperations}" d:ItemsSource="{Binding MathOperations, FallbackValue=+-*/}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type srcMath:MathOperation}">
+                            <Button Content="{Binding Symbol}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+                <Button Content="=" Grid.Row="1" Height="80"/>
+            </Grid>
+
+        </Grid>
 
     </Grid>
 </Window>

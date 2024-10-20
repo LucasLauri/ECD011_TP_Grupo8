@@ -8,6 +8,10 @@ namespace ECD011_TP_Grupo8.src.math
 {
     public class Add : MathOperation
     {
+        public Add() : base("+")
+        {
+        }
+
         /// <summary>
         /// Soma os valores em <see cref="MathOperation.Numbers"/>
         /// </summary>

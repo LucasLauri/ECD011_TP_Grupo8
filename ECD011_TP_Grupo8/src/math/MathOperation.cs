@@ -48,6 +48,22 @@ namespace ECD011_TP_Grupo8.src.math
             set => SetField(ref _numbersView, value);
         }
 
+
+        private string _symbol;
+        /// <summary>
+        /// Simbolo da operação matemática
+        /// </summary>
+        public string Symbol
+        {
+            get => _symbol;
+            set => SetField(ref _symbol, value);
+        }
+
+        public MathOperation(string symbol)
+        {
+            Symbol = symbol;
+        }
+
         /// <summary>
         /// Executa a operação matemática
         /// </summary>

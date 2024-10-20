@@ -8,6 +8,11 @@ namespace ECD011_TP_Grupo8.src.math
 {
     public class Multiply : MathOperation
     {
+        public Multiply() : base("*")
+        {
+        }
+
+
         /// <summary>
         /// Executa a multiplicação dos número em <see cref="MathOperation.Numbers"/> na ordem em que aparecem
         /// </summary>
