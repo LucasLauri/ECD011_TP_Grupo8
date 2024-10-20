@@ -47,7 +47,7 @@ namespace ECD011_TP_Grupo8.src.math.Tests
 
         [TestMethod()]
         public void MultiplyTest()
-        {            
+        {
             //FUTURE: usar n números aleatórios para testar a multiplicação
 
             int a = 2;
@@ -59,6 +59,47 @@ namespace ECD011_TP_Grupo8.src.math.Tests
             operation.Numbers.Add(b);
 
             Assert.AreEqual(expectedRet, operation.Run(), message: "A multiplicação dos números não ocorreu corretamente!");
+        }
+
+        [TestMethod()]
+        public void DivideTest()
+        {            
+            //FUTURE: usar n números aleatórios para testar a divisão
+
+            int a = 160;
+            int b = 2;
+            int expectedRet = 80;
+
+            Divide operation = new Divide();
+            operation.Numbers.Add(a);
+            operation.Numbers.Add(b);
+
+            Assert.AreEqual(expectedRet, operation.Run(), message: "A divisão dos números não ocorreu corretamente!");
+        }
+
+
+        [TestMethod()]
+        public void DivideByZeroTest()
+        {
+            int a = 2;
+            int b = 0;
+            double expectedRet = double.PositiveInfinity;
+
+            Divide operation = new Divide();
+            operation.Numbers.Add(a);
+            operation.Numbers.Add(b);
+
+            double ret = 0;
+            try
+            {
+                operation.Run();
+
+                Assert.Fail(message: "A divisão por zero não lançou uma exceção!");
+            }
+            catch (DivideByZeroException)
+            {
+                //Se a exceção DivideByZeroException foi lança da o código esta funcionando corretamente 
+            }
         }
     }
 }
