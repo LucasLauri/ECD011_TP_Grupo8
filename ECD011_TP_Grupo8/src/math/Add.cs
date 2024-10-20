@@ -24,7 +24,7 @@ namespace ECD011_TP_Grupo8.src.math
                 ret += number;
 
             //Ret para exemplo de erro no build do GitHub
-            ret = -1;
+            //ret = -1;
 
             return ret;
 
