@@ -44,5 +44,21 @@ namespace ECD011_TP_Grupo8.src.math.Tests
 
             Assert.AreEqual(expectedRet, operation.Run(), message: "A subtração dos números não ocorreu corretamente!");
         }
+
+        [TestMethod()]
+        public void MultiplyTest()
+        {            
+            //FUTURE: usar n números aleatórios para testar a multiplicação
+
+            int a = 2;
+            int b = 25;
+            int expectedRet = 50;
+
+            Multiply operation = new Multiply();
+            operation.Numbers.Add(a);
+            operation.Numbers.Add(b);
+
+            Assert.AreEqual(expectedRet, operation.Run(), message: "A multiplicação dos números não ocorreu corretamente!");
+        }
     }
 }
