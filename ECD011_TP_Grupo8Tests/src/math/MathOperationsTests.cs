@@ -1,16 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ECD011_TP_Grupo8;
+using ECD011_TP_Grupo8.src.math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECD011_TP_Grupo8.src;
 
-namespace ECD011_TP_Grupo8.Tests
+namespace ECD011_TP_Grupo8.src.math.Tests
 {
     [TestClass()]
-    public class MainWindowTests
+    public class MathOperationsTests
     {
         [TestMethod()]
         public void AddTest()
@@ -19,9 +18,11 @@ namespace ECD011_TP_Grupo8.Tests
             int b = 2;
             int expectedRet = 3;
 
-            Program program = new Program();
+            Add addOperation = new Add();
+            addOperation.Numbers.Add(a);
+            addOperation.Numbers.Add(b);
 
-            Assert.AreEqual(expectedRet, program.Add(a, b));
+            Assert.AreEqual(expectedRet, addOperation.Run());
         }
     }
 }
